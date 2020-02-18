@@ -65,7 +65,6 @@ public class CalculatorController {
 
     @RequestMapping("rezult")
     public ModelAndView rezultPage(@RequestParam String submit) {
-        char symbol = '0';
         int number1 = 0;
         int number2 = 0;
         int index = 0;
@@ -78,35 +77,56 @@ public class CalculatorController {
 
         while (collectionNewSymbol.contains("/")) {
             index = collectionNewSymbol.indexOf("/");  //нахожу индекс элемента в коллекции символов
-
-            symbol = collectionNewSymbol.get(index).charAt(0);  //сохраняю сам символ
-
             collectionNewSymbol.remove(index);  //удаляю элемент с символом из коллекции символов
 
             number1 = Integer.parseInt(collectionNewNumber.get(index));   //сохраняем элемент в переменную
             number2 = Integer.parseInt(collectionNewNumber.get(index + 1));  //сохраняем элемент в переменную
-            collectionNewNumber.remove(index);   // удаляем элемент из переменной
-            collectionNewNumber.remove(index + 1);   // удаляем элемент из переменной
 
-            int a = 0;
-            switch (symbol) {
-                case '+':
-                    a = number1 + number2;
-                    break;
-                case '-':
-                    a = number1 - number2;
-                    break;
-                case '/':
-                    a = number1 / number2;
-                    break;
-                case '*':
-                    a = number1 * number2;
-                    break;
-            }
+            collectionNewNumber.remove(index + 1);   // удаляем элемент из переменной
+            collectionNewNumber.remove(index);  // удаляем элемент из переменной
+
+            int a = number1 / number2;
             collectionNewNumber.add(index, Integer.toString(a));
         }
+        while (collectionNewSymbol.contains("*")) {
+            index = collectionNewSymbol.indexOf("*");  //нахожу индекс элемента в коллекции символов
+            collectionNewSymbol.remove(index);  //удаляю элемент с символом из коллекции символов
 
-        //result = Integer.toString(a);
+            number1 = Integer.parseInt(collectionNewNumber.get(index));   //сохраняем элемент в переменную
+            number2 = Integer.parseInt(collectionNewNumber.get(index + 1));  //сохраняем элемент в переменную
+
+            collectionNewNumber.remove(index + 1);   // удаляем элемент из переменной
+            collectionNewNumber.remove(index);  // удаляем элемент из переменной
+
+            int a = number1 * number2;
+            collectionNewNumber.add(index, Integer.toString(a));
+        }
+        while (collectionNewSymbol.contains("+")) {
+            index = collectionNewSymbol.indexOf("+");  //нахожу индекс элемента в коллекции символов
+            collectionNewSymbol.remove(index);  //удаляю элемент с символом из коллекции символов
+
+            number1 = Integer.parseInt(collectionNewNumber.get(index));   //сохраняем элемент в переменную
+            number2 = Integer.parseInt(collectionNewNumber.get(index + 1));  //сохраняем элемент в переменную
+
+            collectionNewNumber.remove(index + 1);   // удаляем элемент из переменной
+            collectionNewNumber.remove(index);  // удаляем элемент из переменной
+
+            int a = number1 + number2;
+            collectionNewNumber.add(index, Integer.toString(a));
+        }
+        while (collectionNewSymbol.contains("-")) {
+            index = collectionNewSymbol.indexOf("-");  //нахожу индекс элемента в коллекции символов
+            collectionNewSymbol.remove(index);  //удаляю элемент с символом из коллекции символов
+
+            number1 = Integer.parseInt(collectionNewNumber.get(index));   //сохраняем элемент в переменную
+            number2 = Integer.parseInt(collectionNewNumber.get(index + 1));  //сохраняем элемент в переменную
+
+            collectionNewNumber.remove(index + 1);   // удаляем элемент из переменной
+            collectionNewNumber.remove(index);  // удаляем элемент из переменной
+
+            int a = number1 - number2;
+            collectionNewNumber.add(index, Integer.toString(a));
+        }
 
         model.addObject("max", CalculatorController.collectionNewNumber.get(0));
         model.setViewName("calculator/calculator");
