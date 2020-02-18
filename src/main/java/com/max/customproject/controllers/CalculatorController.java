@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 @Controller
@@ -13,6 +14,8 @@ public class CalculatorController {
     public static String number = "";
     public static String result = "";
     public static ArrayList<String> collectionNumber = new ArrayList<String>();
+    public static ArrayList<String> collectionNewNumber = new ArrayList<String>();
+    public static ArrayList<String> collectionNewSymbol = new ArrayList<String>();
     public static String resultCollection = "";
     public static String resultСalculation = "";
     //public static int b = 0;
@@ -25,8 +28,8 @@ public class CalculatorController {
     public ModelAndView testPage(@RequestParam String submit) {
         ModelAndView model = new ModelAndView();
 
+        number = number + submit;
         result = result + submit;//5+4
-        collectionNumber.add(submit);
 
         System.out.println("Сработал 1 метод");
         System.out.println("number = " + submit);
@@ -43,6 +46,8 @@ public class CalculatorController {
     public ModelAndView mathPage(@RequestParam String submit) {
         ModelAndView model = new ModelAndView();
 
+        collectionNumber.add(number);
+        number = "";
         result = result + submit;
         collectionNumber.add(submit);
 
@@ -60,66 +65,86 @@ public class CalculatorController {
 
     @RequestMapping("rezult")
     public ModelAndView rezultPage(@RequestParam String submit) {
-        ModelAndView model = new ModelAndView();
+        char symbol = '0';
         int number1 = 0;
         int number2 = 0;
-        char symbol = 'q';
+        int index = 0;
 
-        for (int i = 0; i < collectionNumber.size(); i++) {
-            char x = collectionNumber.get(i).charAt(0);
-            if(Character.isDigit(x)){
-                if(number1 == 0 ){
-                    number1 = Integer.parseInt(collectionNumber.get(i));
-                }else{
-                    number2 = Integer.parseInt(collectionNumber.get(i));
-                }
-            }else{
-                symbol = collectionNumber.get(i).charAt(0);
+        collectionNumber.add(number); //сохраняю в общую коллекцию последнее введенное число до знака равно
+        number = "";
+
+        CalculatorController.collection();  //разбиваю общую коллекцию на две
+        ModelAndView model = new ModelAndView();
+
+        while (collectionNewSymbol.contains("/")) {
+            index = collectionNewSymbol.indexOf("/");  //нахожу индекс элемента в коллекции символов
+
+            symbol = collectionNewSymbol.get(index).charAt(0);  //сохраняю сам символ
+
+            collectionNewSymbol.remove(index);  //удаляю элемент с символом из коллекции символов
+
+            number1 = Integer.parseInt(collectionNewNumber.get(index));   //сохраняем элемент в переменную
+            number2 = Integer.parseInt(collectionNewNumber.get(index + 1));  //сохраняем элемент в переменную
+            collectionNewNumber.remove(index);   // удаляем элемент из переменной
+            collectionNewNumber.remove(index + 1);   // удаляем элемент из переменной
+
+            int a = 0;
+            switch (symbol) {
+                case '+':
+                    a = number1 + number2;
+                    break;
+                case '-':
+                    a = number1 - number2;
+                    break;
+                case '/':
+                    a = number1 / number2;
+                    break;
+                case '*':
+                    a = number1 * number2;
+                    break;
             }
+            collectionNewNumber.add(index, Integer.toString(a));
         }
 
-        int a = 0;
-        switch (symbol) {
-            case '+':
-                a = number1 + number2;
-                break;
-            case '-':
-                a = number1 - number2;
-                break;
-            case '/':
-                a = number1 / number2;
-                break;
-            case '*':
-                a = number1 * number2;
-                break;
-        }
+        //result = Integer.toString(a);
 
-        collectionNumber = new ArrayList<>();
-
-        result = Integer.toString(a);
-        collectionNumber.add(Integer.toString(a));
-        System.out.println("Сработал 3 метод");
-        System.out.println("number = " + submit);
-        System.out.println("result = " + result);
-        for (int i = 0; i < collectionNumber.size(); i++) {
-            System.out.println("Номер коллекции " + i + ": " + collectionNumber.get(i));
-        }
-        model.addObject("max", CalculatorController.result);
+        model.addObject("max", CalculatorController.collectionNewNumber.get(0));
         model.setViewName("calculator/calculator");
         return model;
     }
+
     @RequestMapping("clean")
     public String cleanPage() {
         result = "";
         collectionNumber = new ArrayList<String>();
+        collectionNewNumber = new ArrayList<String>();
+        collectionNewSymbol = new ArrayList<String>();
 
-
-        System.out.println("Чистка");
-        System.out.println("result = " + result);
-        for (int i = 0; i < collectionNumber.size(); i++) {
-            System.out.println("Номер коллекции " + i + ": " + collectionNumber.get(i));
-        }
         return "calculator/calculator";
     }
 
+    /*Проверяем является ли элемент коллекии числом*/
+
+    public static boolean isDigit(String string) {
+        boolean bol = false;
+        for (int i = 0; i < string.length(); i++) {
+            char x = string.charAt(i);
+            if (Character.isDigit(x)) {
+                bol = true;
+            }
+        }
+        return bol;
+    }
+
+    /*Разбиваем коллекцию на 2 коллекуии одна с цифрами, другая со знаками*/
+    public static void collection() {
+        for (int i = 0; i < collectionNumber.size(); i++) {
+            boolean f = CalculatorController.isDigit(collectionNumber.get(i));
+            if (f) {
+                collectionNewNumber.add(collectionNumber.get(i));
+            } else {
+                collectionNewSymbol.add(collectionNumber.get(i));
+            }
+        }
+    }
 }
