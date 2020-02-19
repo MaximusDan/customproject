@@ -11,11 +11,13 @@ public class AuthorizationController {
     public ModelAndView registrationPage(@RequestParam String login, String password) {
         ModelAndView model = new ModelAndView();
 
+        //System.out.println(login);
+        //System.out.println(password);
 
         model.addObject("log", login);
         model.addObject("pas", password);
 
-        model.setViewName("registration/registration");
+        model.setViewName("index");
         return model;
     }
 }

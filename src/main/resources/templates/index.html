@@ -1,10 +1,38 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link th:href="@{/css/regAndAuthorization.css}" rel="stylesheet"/>
-    </head>
-    <body>
-        <a href="registration">Регистрация</a>
-    </body>`
+<html xmlns:th="http://www.thymeleaf.org">>
+<head>
+	<title>Регистрация и Авторизация</title>
+	<link th:href="@{/css/registration.css}" rel="stylesheet"/>
+</head>
+	<body>	
+			<div class="form_wrap_left">
+				<form action="autorization" name="MyForm" autocomplete="on">
+					<h1>Вход</h1>
+					<label for="login"><b>Введите логин или Email</b></label><br/>
+					<input id="login" name = "login" type="text" placeholder=" Логин или Email" size="40" required><br/>
+					<br/>		
+					<label for="password"><b>Введите Пароль</b></label><br/>
+					<input id="password" name = "password" type="text" placeholder=" Пароль" size="40" required><br/>
+					<br/>
+					<input type="submit" value="Войти"><br/>
+				</form>
+			</div>
+			<div class="form_wrap_right">
+				<form action="registration" name="MyForm" autocomplete="on">
+					<h1>Регистрация</h1>
+					<label for="login1"><b>Введите логин</b></label><br/>
+					<input id="login1" name="login1" type="text" placeholder=" Логин" size="40" required><br/>
+					<br/>		
+					<label for="email"><b>Введите Email</b></label><br/>
+					<input id="email" name = "email" type="email" placeholder=" Email" size="40" required><br/>
+					<br/>	
+					<label for="psw"><b>Введите пароль</b></label><br/>
+					<input id="psw" name = "psw" type="password" placeholder="Пароль" size="40" required><br/>
+					<br/>
+					<label for="psw1"><b>Повторите пароль</b></label><br/>
+					<input id="psw1" name = "psw1" type="password" placeholder="Повторите пароль" size="40" required><br/>
+					<br/>
+					<input type="submit" value="Регистрация"><br/>
+				</form>
+			</div>
+	</body>
 </html>

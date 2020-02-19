@@ -7,22 +7,22 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RegistrationController {
-    @RequestMapping("registration")
-    public String registrationPage() {
-        return "registration/registration";
-    }
 
-    @RequestMapping("registrat")
+    @RequestMapping("registration")
     public ModelAndView registrationPage(@RequestParam String login1, String email, String psw, String psw1) {
         ModelAndView model = new ModelAndView();
 
+        //System.out.println(login1);
+        //System.out.println(email);
+        //System.out.println(psw);
+        //System.out.println(psw1);
 
         model.addObject("login", login1);
         model.addObject("mail", email);
         model.addObject("pass", psw);
         model.addObject("doublePass", psw1);
 
-        model.setViewName("registration/registration");
+        model.setViewName("index");
         return model;
     }
 }
