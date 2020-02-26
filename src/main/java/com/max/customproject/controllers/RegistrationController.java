@@ -15,16 +15,20 @@ public class RegistrationController {
         boolean rezultQuantityLettersLogin = RegistrationController.checkQuantityLettersLogin(login1);
         boolean rezultLettersLogin = RegistrationController.checkLettersLogin(login1);
         boolean rezultLogin = rezultQuantityLettersLogin && rezultLettersLogin;  //проверяем логин
+        //System.out.println(rezultLogin);
 
         boolean rezultQuantityPass = RegistrationController.checkQuantityPass(psw);
         boolean rezultLetterPass = RegistrationController.checkLetterPass(psw);
         boolean rezultPass = rezultQuantityPass && rezultLetterPass;   //проверяем пароль
+        //System.out.println("итого  " + rezultPass);
 
         boolean rezultDoublePass = RegistrationController.checkDoublePass(psw1, psw); //проверяем дубликат пароля
+        //System.out.println("итого 2  " + rezultDoublePass);*/
 
         boolean rezultQuantityMail = RegistrationController.checkQuantityMail(email);
         boolean rezultLetterMail = RegistrationController.checkLetterMail(email);
-        boolean rezultMail =  rezultQuantityMail && rezultLetterMail;    //проверяем мыло
+        boolean rezultMail =  rezultQuantityMail && rezultLetterMail;    //проверяем мыло*/
+        //System.out.println("итого  " + rezultMail);
 
         model.addObject("login", login1);
         model.addObject("mail", email);
@@ -44,31 +48,42 @@ public class RegistrationController {
     }
 
     public static boolean checkLettersLogin(String login) {
+        int a = 0;
         boolean bol = false;
         boolean bol1 = false;
         boolean bol2 = false;
         boolean bol3 = false;
         boolean bol4 = false;
         boolean bol5 = true;
-        String[] result = login.split("");
+        char[] result = login.toCharArray();
 
         for (int i = 0; i < login.length(); i++) {
-            if (Character.isDigit(Integer.parseInt(result[i]))) {
+            if (Character.isDigit(result[i])) {
                 bol1 = true;
-                if (Character.isLetter(Integer.parseInt(result[i]))) {
-                    bol2 = true;
-                    if (result[i].equals("@")) {
-                        bol3 = true;
-                        if (result[i].equals(".")) {
-                            bol4 = true;
-                        }
-                    }
-                }
             } else {
+                a++;
+            }
+            if (Character.isLetter(result[i])) {
+                bol2 = true;
+            } else {
+                a++;
+            }
+            if (result[i] == '@') {
+                bol3 = true;
+            } else {
+                a++;
+            }
+            if (result[i] == '.') {
+                bol4 = true;
+            } else {
+                a++;
+            }
+            if (a == 4) {
                 bol5 = false;
                 System.out.println("Недопустимый символ");
                 break;
             }
+            a = 0;
         }
         if (bol1 && bol2 && bol3 && bol4 && bol5) {
             bol = true;
@@ -85,33 +100,56 @@ public class RegistrationController {
     }
 
     public static boolean checkLetterPass(String pass) {
+        int a = 0;
         boolean bol = false;
         boolean bol1 = false;
         boolean bol2 = false;
         boolean bol3 = false;
         boolean bol4 = false;
-        boolean bol5 = true;
-        String[] result = pass.split("");
+        boolean bol5 = false;
+        boolean bol6 = true;
+        char[] result = pass.toCharArray();
 
         for (int i = 0; i < pass.length(); i++) {
-            if (Character.isDigit(Integer.parseInt(result[i]))) {
+            if (Character.isDigit(result[i])) {
                 bol1 = true;
-                if (Character.isUpperCase(Integer.parseInt(result[i]))) {
-                    bol2 = true;
-                    if (Character.isUpperCase(Integer.parseInt(result[i]))) {
-                        bol3 = true;
-                        if (result[i].equals("@") || result[i].equals(",") || result[i].equals(".") || result[i].equals("!") || result[i].equals("$") || Character.isLetter(Integer.parseInt(result[i]))) {
-                            bol4 = true;
-                        }
-                    }
-                }
+            }else {
+                a++;
+            }
+            if (Character.isLetter(result[i])) {
+                bol2 = true;
             } else {
-                bol5 = false;
+                a++;
+            }
+            if (Character.isUpperCase(result[i])) {
+                bol3 = true;
+            } else {
+                a++;
+            }
+            if (Character.isUpperCase(result[i])) {
+                bol4 = true;
+            } else {
+                a++;
+            }
+            if (result[i] == '@' || result[i] == ',' || result[i] == '.' || result[i] == '!' || result[i] =='$'){
+                bol5 = true;
+            }else{
+                a++;
+            }
+            if (a == 5) {
+                bol6 = false;
                 System.out.println("Недопустимый символ");
                 break;
             }
+            a = 0;
         }
-        if (bol1 && bol2 && bol3 && bol5) {
+        /*System.out.println("bol1  " + bol1);
+        System.out.println("bol2  " + bol2);
+        System.out.println("bol3  " + bol3);
+        System.out.println("bol4  " + bol4);
+        System.out.println("bol6  " + bol6);*/
+
+        if (bol1 && bol2 && bol3 && bol4 && bol6) {
             bol = true;
         }
         return bol;
@@ -136,29 +174,24 @@ public class RegistrationController {
 
 
     public static boolean checkLetterMail(String mail) {
+        int first = 0;
+        int second = 0;
         boolean bol = false;
         boolean bol1 = false;
         boolean bol2 = false;
-        boolean bol3 = false;
-        String[] result = mail.split("");
+        char[] result = mail.toCharArray();
+
         for (int i = 0; i < mail.length(); i++) {
-            if(result[i].equals("@")){
+            if (result[i] == '@') {
                 bol1 = true;
+                first = i;
             }
-            if(result[i].equals(".")){
+            if (result[i] == '.') {
                 bol2 = true;
+                second = i;
             }
         }
-        for (int i = 0; i < mail.length(); i++) {   //этим циклом проверяю стоит ли 2 раньше точки
-            if(result[i].equals("@")){
-                bol3 = true;
-                break;
-            }
-            if(result[i].equals(".")){
-                break;
-            }
-        }
-        if (bol1 && bol2 && bol3) {
+        if (first < second && bol1 && bol2) {
             bol = true;
         }
         return bol;
