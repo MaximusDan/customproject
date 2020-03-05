@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">>
 <head>
 	<title>Регистрация и Авторизация</title>
-	<link th:href="@{/css/registration.css}" rel="stylesheet"/>
+	<link th:href="@{/css/registration.css}" rel="stylesheet"/> <!--"подключение цсс"-->
 </head>
 	<body>	
 			<div class="form_wrap_left">
@@ -21,17 +21,22 @@
 					<h1>Регистрация</h1>
 					<label for="login1"><b>Введите логин</b></label><br/>
 					<input id="login1" name="login1" type="text" placeholder=" Логин" size="40" required><br/>
+					    <label class="collor" th:text="${loginErrorMessage}"></label><br/>
 					<br/>		
 					<label for="email"><b>Введите Email</b></label><br/>
 					<input id="email" name = "email" type="email" placeholder=" Email" size="40" required><br/>
+					    <label class="collor" th:text="${mailErrorMessage}"></label><br/>
 					<br/>	
 					<label for="psw"><b>Введите пароль</b></label><br/>
 					<input id="psw" name = "psw" type="password" placeholder="Пароль" size="40" required><br/>
+						<label class="collor" th:text="${passErrorMessage}"></label><br/>
 					<br/>
 					<label for="psw1"><b>Повторите пароль</b></label><br/>
 					<input id="psw1" name = "psw1" type="password" placeholder="Повторите пароль" size="40" required><br/>
+						<label class="collor" th:text="${doublePassErrorMessage}"></label><br/>
 					<br/>
 					<input type="submit" value="Регистрация"><br/>
+
 				</form>
 			</div>
 	</body>

@@ -15,25 +15,48 @@ public class RegistrationController {
         boolean rezultQuantityLettersLogin = RegistrationController.checkQuantityLettersLogin(login1);
         boolean rezultLettersLogin = RegistrationController.checkLettersLogin(login1);
         boolean rezultLogin = rezultQuantityLettersLogin && rezultLettersLogin;  //проверяем логин
-        //System.out.println(rezultLogin);
+        if (rezultLogin == false) {
+            model.addObject("loginErrorMessage", "Логин должен состоять из 5-15 символов\n" +
+                    "Должен состоять только из букв и цифр и символа @ и . (точка)");
+        } else {
+            model.addObject("loginErrorMessage", "Логин создан успешно");
+            model.addObject("login", login1);
+        }
 
         boolean rezultQuantityPass = RegistrationController.checkQuantityPass(psw);
         boolean rezultLetterPass = RegistrationController.checkLetterPass(psw);
         boolean rezultPass = rezultQuantityPass && rezultLetterPass;   //проверяем пароль
-        //System.out.println("итого  " + rezultPass);
+        if (rezultPass == false) {
+            model.addObject("passErrorMessage", "Пароль должен состоять из 8-20 символов\n" +
+                    "Содержать хотя бы одну цифру(можно и больше)\n" +
+                    "Содержать хотя бы одну заглавную букву\n" +
+                    "Сожет содержать след символы: !@.,$ (но они не обязательны)");
+        } else {
+            model.addObject("passErrorMessage", "Пароль создан успешно");
+            model.addObject("pass", psw);
+        }
 
         boolean rezultDoublePass = RegistrationController.checkDoublePass(psw1, psw); //проверяем дубликат пароля
-        //System.out.println("итого 2  " + rezultDoublePass);*/
+        if (rezultDoublePass == false) {
+            model.addObject("doublePassErrorMessage", "Поле повторите пароль и пароль не совпадают");
+        } else {
+            model.addObject("doublePassErrorMessage", "Поле повторите введено успешно");
+            model.addObject("doublePass", psw1);
+        }
 
         boolean rezultQuantityMail = RegistrationController.checkQuantityMail(email);
         boolean rezultLetterMail = RegistrationController.checkLetterMail(email);
-        boolean rezultMail =  rezultQuantityMail && rezultLetterMail;    //проверяем мыло*/
-        //System.out.println("итого  " + rezultMail);
-
-        model.addObject("login", login1);
-        model.addObject("mail", email);
-        model.addObject("pass", psw);
-        model.addObject("doublePass", psw1);
+        boolean rezultMail = rezultQuantityMail && rezultLetterMail;    //проверяем мыло*/
+        if (rezultMail == false) {
+            model.addObject("mailErrorMessage", "Емаил должен состоять из 5-100 символов\n" +
+                    "Обязательно содержать символ @ и символ точка\n" +
+                    " @ должна идти раньше символа точка\n" +
+                    "Может содержать буквы, цифры, любые символы");
+        } else {
+            model.addObject("mailErrorMessage", "Емаил создан успешно");
+            model.addObject("mail", email);
+        }
+        System.out.println();
 
         model.setViewName("index");
         return model;
