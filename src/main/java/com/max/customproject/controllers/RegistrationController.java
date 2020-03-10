@@ -1,9 +1,11 @@
 package com.max.customproject.controllers;
 
+import com.max.customproject.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import storage.UserStorage;
 
 @Controller
 public class RegistrationController {
@@ -56,8 +58,18 @@ public class RegistrationController {
             model.addObject("mailErrorMessage", "Емаил создан успешно");
             model.addObject("mail", email);
         }
-        System.out.println();
 
+        boolean rez = rezultLogin && rezultPass && rezultDoublePass && rezultMail;
+        if (rez) {
+            User newPeople = new User();
+            newPeople.login = login1;
+            newPeople.pass = psw;
+            newPeople.doublePass = psw1;
+            newPeople.email = email;
+
+            UserStorage.createPeopleCollection(newPeople);
+            //UserStorage.checkPeopleInCollection(newPeople.login,newPeople.pass);
+        }
         model.setViewName("index");
         return model;
     }
@@ -136,7 +148,7 @@ public class RegistrationController {
         for (int i = 0; i < pass.length(); i++) {
             if (Character.isDigit(result[i])) {
                 bol1 = true;
-            }else {
+            } else {
                 a++;
             }
             if (Character.isLetter(result[i])) {
@@ -154,9 +166,9 @@ public class RegistrationController {
             } else {
                 a++;
             }
-            if (result[i] == '@' || result[i] == ',' || result[i] == '.' || result[i] == '!' || result[i] =='$'){
+            if (result[i] == '@' || result[i] == ',' || result[i] == '.' || result[i] == '!' || result[i] == '$') {
                 bol5 = true;
-            }else{
+            } else {
                 a++;
             }
             if (a == 5) {
