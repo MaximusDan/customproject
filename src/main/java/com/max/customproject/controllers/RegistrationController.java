@@ -1,11 +1,11 @@
 package com.max.customproject.controllers;
 
-import com.max.customproject.User;
+import com.max.customproject.entity.User;
+import com.max.customproject.storage.UserStorage;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import storage.UserStorage;
 
 @Controller
 public class RegistrationController {
@@ -61,13 +61,12 @@ public class RegistrationController {
 
         boolean rez = rezultLogin && rezultPass && rezultDoublePass && rezultMail;
         if (rez) {
-            User newPeople = new User();
-            newPeople.login = login1;
-            newPeople.pass = psw;
-            newPeople.doublePass = psw1;
-            newPeople.email = email;
+            User newUser = new User();
+            newUser.login = login1;
+            newUser.password = psw;
+            newUser.email = email;
 
-            UserStorage.createPeopleCollection(newPeople);
+            UserStorage.saveUser(newUser);
             //UserStorage.checkPeopleInCollection(newPeople.login,newPeople.pass);
         }
         model.setViewName("index");
