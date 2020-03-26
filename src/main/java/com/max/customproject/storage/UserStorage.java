@@ -4,21 +4,24 @@ import com.max.customproject.entity.User;
 
 import java.util.ArrayList;
 
-/*
- * В классе хранится коллекция зарегистрированных пользователей
+/**
+ * Класс предназначен для хранения коллекии зарегистрированных пользователей
  * */
 public class UserStorage {
+    /*
+     * users - коллекция новых зарегистрированных пльзователей
+     */
     public static ArrayList<User> users = new ArrayList<>();
 
-    /*
+    /**
      * Метод добавляет ползоваеля в коллекцию
      */
-    public static void saveUser(User newUser1) {
-        users.add(newUser1);
+    public static void saveUser(User newUser) {
+        users.add(newUser);
     }
 
-    /*
-    ищем пользователя. если находим то возвращаем. Если не находим то возвращаем null
+    /**
+     *Ищем пользователя. если находим то возвращаем. Если не находим то возвращаем null
      */
     public static User checkPeopleInCollection(String log, String pass) {
 

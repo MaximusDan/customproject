@@ -1,9 +1,9 @@
 package com.max.customproject.validators;
 
-    /*
-    Метод проверяет длину логина
-    Длина логина должна быть от 5 -15 символов
-    */
+    /**
+     *Метод проверяет длину логина
+     *Длина логина должна быть от 5 -15 символов
+     */
 public class RegistrationValidator {
     public static boolean checkQuantityLettersLogin(String login) {
         boolean bol = false;
@@ -13,10 +13,10 @@ public class RegistrationValidator {
         return bol;
     }
 
-    /*
-    Метод проверяет наличие определенных символов в логине
-    Логин состоять только из букв и цифр и символа @ и . (точка)"
-    */
+    /**
+     *Метод проверяет наличие определенных символов в логине
+     *Логин состоять только из букв и цифр и символа @ и . (точка)"
+     */
     public static boolean checkLettersLogin(String login) {
         int a = 0;
         boolean bol = false;
@@ -61,25 +61,25 @@ public class RegistrationValidator {
         return bol;
     }
 
-    /*
-    Метод проверяет длину пароля
-    Длина пароля должна быть от 8-20 символов
-    */
-    public static boolean checkQuantityPass(String pass) {
+    /**
+     *Метод проверяет длину пароля
+     *Длина пароля должна быть от 8-20 символов
+     */
+    public static boolean checkQuantityPass(String password) {
         boolean bol = false;
-        if (pass.length() < 21 && pass.length() > 7) {
+        if (password.length() < 21 && password.length() > 7) {
             bol = true;
         }
         return bol;
     }
 
-    /*
-    Метод проверяет наличие определенных символов в пароле
-    Пароль должен содержать хотя бы одну цифру(можно и больше)
-    Пароль должен содержать хотя бы одну заглавную букву
-    Пароль должен сожет содержать след символы: !@.,$ (но они не обязательны)
-    */
-    public static boolean checkLetterPass(String pass) {
+    /**
+     *Метод проверяет наличие определенных символов в пароле
+     *Пароль должен содержать хотя бы одну цифру(можно и больше)
+     *Пароль должен содержать хотя бы одну заглавную букву
+     *Пароль должен сожет содержать след символы: !@.,$ (но они не обязательны)
+     */
+    public static boolean checkLetterPass(String password) {
         int a = 0;
         boolean bol = false;
         boolean bol1 = false;
@@ -88,9 +88,9 @@ public class RegistrationValidator {
         boolean bol4 = false;
         boolean bol5 = false;
         boolean bol6 = true;
-        char[] result = pass.toCharArray();
+        char[] result = password.toCharArray();
 
-        for (int i = 0; i < pass.length(); i++) {
+        for (int i = 0; i < password.length(); i++) {
             if (Character.isDigit(result[i])) {
                 bol1 = true;
             } else {
@@ -135,21 +135,21 @@ public class RegistrationValidator {
         return bol;
     }
 
-    /*
-    Метод проверяет что-бы поле повторите пароль совпадало с паролем
-    */
-    public static boolean checkDoublePass(String pass1, String pass) {
+    /**
+     *Метод проверяет что-бы поле повторите пароль совпадало с паролем
+     */
+    public static boolean checkDoublePass(String doublePassword, String password) {
         boolean bol = false;
-        if (pass1.equals(pass)) {
+        if (doublePassword.equals(password)) {
             bol = true;
         }
         return bol;
     }
 
-    /*
-    Метод проверяет длину email
-    Длина пароля должна быть от 5-100 символов
-    */
+    /**
+     *Метод проверяет длину email
+     *Длина пароля должна быть от 5-100 символов
+     */
     public static boolean checkQuantityMail(String mail) {
         boolean bol = false;
         if (mail.length() < 101 && mail.length() > 4) {
@@ -158,9 +158,9 @@ public class RegistrationValidator {
         return bol;
     }
 
-    /*
-    Метод проверяет наличие и расположение символов @ и "." в email
-    */
+    /**
+     *Метод проверяет наличие и расположение символов @ и "." в email
+     */
     public static boolean checkLetterMail(String mail) {
         int first = 0;
         int second = 0;
