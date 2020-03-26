@@ -22,7 +22,6 @@ public class RegistrationController {
             model.addObject("loginErrorMessage", "Логин должен состоять из 5-15 символов\n" +
                     "Должен состоять только из букв и цифр и символа @ и . (точка)");
         } else {
-            model.addObject("loginErrorMessage", "Логин создан успешно");
             model.addObject("login", login1);
         }
 
@@ -35,7 +34,6 @@ public class RegistrationController {
                     "Содержать хотя бы одну заглавную букву\n" +
                     "Сожет содержать след символы: !@.,$ (но они не обязательны)");
         } else {
-            model.addObject("passErrorMessage", "Пароль создан успешно");
             model.addObject("pass", psw);
         }
 
@@ -43,7 +41,6 @@ public class RegistrationController {
         if (rezultDoublePass == false) {
             model.addObject("doublePassErrorMessage", "Поле повторите пароль и пароль не совпадают");
         } else {
-            model.addObject("doublePassErrorMessage", "Поле повторите введено успешно");
             model.addObject("doublePass", psw1);
         }
 
@@ -56,12 +53,12 @@ public class RegistrationController {
                     " @ должна идти раньше символа точка\n" +
                     "Может содержать буквы, цифры, любые символы");
         } else {
-            model.addObject("mailErrorMessage", "Емаил создан успешно");
             model.addObject("mail", email);
         }
 
         boolean rez = rezultLogin && rezultPass && rezultDoublePass && rezultMail;
         if (rez) {
+            model.addObject("finishMessage", "Регистрация прошла успешно");
             User newUser = new User();
             newUser.login = login1;
             newUser.password = psw;
