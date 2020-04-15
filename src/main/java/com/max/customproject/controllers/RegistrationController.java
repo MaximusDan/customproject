@@ -24,7 +24,7 @@ public class RegistrationController {
         boolean rezultMail= RegistrationController.checkMail(model,email);
         boolean rezultPass = RegistrationController.checkPassword(model,psw);
         boolean rezultDoublePass = RegistrationController.checkDoublePassword(model,psw1,psw);
-        
+
         boolean rez = rezultLogin && rezultPass && rezultDoublePass && rezultMail;
         if (rez) {
             model.addObject("finishMessage", "Регистрация прошла успешно");
