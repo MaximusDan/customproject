@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class AuthorizationMainController {
+public class MainController {
     @RequestMapping("main")
     private String mainPage() {
         return "main";
