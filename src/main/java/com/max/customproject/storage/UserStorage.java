@@ -23,16 +23,22 @@ public class UserStorage {
     /**
      *Ищем пользователя. если находим то возвращаем. Если не находим то возвращаем null
      */
-    public static User checkPeopleInCollection(String log, String pass) {
+    public static User checkPeopleInCollection(String login, String password) {
 
         User user = null;
         for (int i = 0; i < users.size(); i++) {
             User user1 = users.get(i);
-            if (user1.login == log && user1.password == pass) {
+            if (user1.login.equals(login) && user1.password.equals(password)) {
                 user = user1;
                 break;
             }
         }
         return user;
+    }
+
+    public static void www() {
+        for (int i = 0; i < users.size(); i++) {
+            System.out.println(users.get(i).login);
+        }
     }
 }
