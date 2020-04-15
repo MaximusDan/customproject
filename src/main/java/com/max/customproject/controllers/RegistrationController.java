@@ -7,7 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
+/**
+ * Данный класс является классом контроллером.
+ * Предназначен для непосредственной обработки запросов при регистрации клиента и возвращения результатов.
+ * registration - при нажатии на кнопку Регистрация работает данный класс
+ */
 @Controller
 public class RegistrationController {
 
@@ -32,7 +36,7 @@ public class RegistrationController {
             model.addObject("passErrorMessage", "Пароль должен состоять из 8-20 символов\n" +
                     "Содержать хотя бы одну цифру(можно и больше)\n" +
                     "Содержать хотя бы одну заглавную букву\n" +
-                    "Сожет содержать след символы: !@.,$ (но они не обязательны)");
+                    "Может содержать след символы: !@.,$ (но они не обязательны)");
         } else {
             model.addObject("pass", psw);
         }
@@ -64,9 +68,12 @@ public class RegistrationController {
             newUser.password = psw;
             newUser.email = email;
 
-            UserStorage.saveUser(newUser);
-            //UserStorage.checkPeopleInCollection(newPeople.login,newPeople.pass);
+            User checkUserInCollection = UserStorage.checkPeopleInCollection(newUser.login, newUser.password);
+            if (checkUserInCollection == null) {
+                UserStorage.saveUser(newUser);
+            }
         }
+        UserStorage.www();
         model.setViewName("index");
         return model;
     }
