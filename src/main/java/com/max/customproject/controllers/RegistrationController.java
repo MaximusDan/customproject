@@ -20,10 +20,10 @@ public class RegistrationController {
     public ModelAndView registrationPage(@RequestParam String login1, String email, String psw, String psw1) {
         ModelAndView model = new ModelAndView();
 
-        boolean rezultLogin = RegistrationController.checkLogin(model,login1);
-        boolean rezultMail= RegistrationController.checkMail(model,email);
-        boolean rezultPass = RegistrationController.checkPassword(model,psw);
-        boolean rezultDoublePass = RegistrationController.checkDoublePassword(model,psw1,psw);
+        boolean rezultLogin = RegistrationController.checkLogin(model, login1);
+        boolean rezultMail = RegistrationController.checkMail(model, email);
+        boolean rezultPass = RegistrationController.checkPassword(model, psw);
+        boolean rezultDoublePass = RegistrationController.checkDoublePassword(model, psw1, psw);
 
         boolean rez = rezultLogin && rezultPass && rezultDoublePass && rezultMail;
         if (rez) {
@@ -38,11 +38,14 @@ public class RegistrationController {
                 UserStorage.saveUser(newUser);
             }
         }
-        UserStorage.www();
         model.setViewName("index");
         return model;
     }
 
+    /**
+     * Метод проверяет соответствует ли логин условию
+     * rezultLogin - возвращает true либо false
+     */
     private static boolean checkLogin(ModelAndView model, String login1) {
 
         boolean rezultQuantityLettersLogin = RegistrationValidator.checkQuantityLettersLogin(login1);
@@ -57,6 +60,10 @@ public class RegistrationController {
         return rezultLogin;
     }
 
+    /**
+     * Метод проверяет соответствует ли почта условию
+     * rezultMail - возвращает true либо false
+     */
     private static boolean checkMail(ModelAndView model, String email) {
         boolean rezultQuantityMail = RegistrationValidator.checkQuantityMail(email);
         boolean rezultLetterMail = RegistrationValidator.checkLetterMail(email);
@@ -72,6 +79,10 @@ public class RegistrationController {
         return rezultMail;
     }
 
+    /**
+     * Метод проверяет соответствует ли пароль условию
+     * rezultPass - возвращает true либо false
+     */
     private static boolean checkPassword(ModelAndView model, String psw) {
         boolean rezultQuantityPass = RegistrationValidator.checkQuantityPass(psw);
         boolean rezultLetterPass = RegistrationValidator.checkLetterPass(psw);
@@ -87,6 +98,10 @@ public class RegistrationController {
         return rezultPass;
     }
 
+    /**
+     * Метод проверяет соответствует ли поле повторите пароль условию
+     * rezultDoublePass - возвращает true либо false
+     */
     private static boolean checkDoublePassword(ModelAndView model, String psw1, String psw) {
         boolean rezultDoublePass = RegistrationValidator.checkDoublePass(psw1, psw); //проверяем дубликат пароля
         if (rezultDoublePass) {

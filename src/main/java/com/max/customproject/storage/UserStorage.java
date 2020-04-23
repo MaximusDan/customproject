@@ -6,9 +6,10 @@ import java.util.ArrayList;
 
 /**
  * Класс предназначен для хранения коллекии зарегистрированных пользователей
- * */
+ */
 public class UserStorage {
-    /*
+
+    /**
      * users - коллекция новых зарегистрированных пльзователей
      */
     public static ArrayList<User> users = new ArrayList<>();
@@ -21,7 +22,7 @@ public class UserStorage {
     }
 
     /**
-     *Ищем пользователя. если находим то возвращаем. Если не находим то возвращаем null
+     * Ищем пользователя. если находим то возвращаем. Если не находим то возвращаем null
      */
     public static User checkPeopleInCollection(String login, String password) {
 
@@ -34,11 +35,5 @@ public class UserStorage {
             }
         }
         return user;
-    }
-
-    public static void www() {
-        for (int i = 0; i < users.size(); i++) {
-            System.out.println(users.get(i).login);
-        }
     }
 }

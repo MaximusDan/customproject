@@ -7,6 +7,7 @@ package com.max.customproject.entity;
  */
 
 public class User {
+
 /**
  * login - поле класса предназначенное для хранения логина пользователя
  * password - поле класса предназначенное для хранения пароля пользователя
@@ -17,3 +18,5 @@ public class User {
     public String email;
 
 }
+
+
