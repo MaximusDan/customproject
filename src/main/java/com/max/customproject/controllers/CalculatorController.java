@@ -1,11 +1,14 @@
 package com.max.customproject.controllers;
 
 import net.minidev.json.JSONUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 
@@ -18,15 +21,25 @@ public class CalculatorController {
     public static ArrayList<String> collectionNewSymbol = new ArrayList<String>();
     public static String resultCollection = "";
     public static String resultСalculation = "";
-    //public static int b = 0;
+
+    @Autowired
+    private HttpSession session;
+
     @RequestMapping("calculator")
     public String calculatorPage() {
-        return "calculator/calculator";
+        Object isAuthorize = session.getAttribute("isAuthorize");
+        if(isAuthorize != null && (boolean)isAuthorize){
+            return "calculator/calculator";
+        }else{
+            return "redirect:/";
+        }
     }
 
     @RequestMapping("test3")
     public ModelAndView testPage(@RequestParam String submit) {
+        Object isAuthorize = session.getAttribute("isAuthorize");
         ModelAndView model = new ModelAndView();
+        if (isAuthorize != null && (boolean) isAuthorize) {
 
         number = number + submit;
         result = result + submit;//5+4
@@ -40,11 +53,17 @@ public class CalculatorController {
         model.addObject("max", CalculatorController.result);
         model.setViewName("calculator/calculator");
         return model;
+        } else {
+            model.setViewName("redirect:/");
+            return model;
+        }
     }
 
     @RequestMapping("math")
     public ModelAndView mathPage(@RequestParam String submit) {
+        Object isAuthorize = session.getAttribute("isAuthorize");
         ModelAndView model = new ModelAndView();
+        if (isAuthorize != null && (boolean) isAuthorize) {
 
         collectionNumber.add(number);
         number = "";
@@ -61,6 +80,10 @@ public class CalculatorController {
        /* resultCollection = "";*/
         model.setViewName("calculator/calculator");
         return model;
+        } else {
+            model.setViewName("redirect:/");
+            return model;
+        }
     }
 
     @RequestMapping("rezult")

@@ -1,47 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<link rel="stylesheet" href="../../static/css/moyCss.css">
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="calculator">
-    <meta charset="UTF-8">
-    <title>Calculator</title>
-    <link th:href="@{/css/moyCss.css}" rel="stylesheet"/>
-</head>
-<body>
-<div class="blok">
-    <form action="test3" name="MyForm" method="POST">
-        <input id="show" type="text" name="text" th:value="${max}"/><br/>
-        <div class="blok1">
-            <input class="blok1_1" type="submit" name="submit" value="7">
-            <input class="blok1_1" type="submit" name="submit" value="8">
-            <input class="blok1_1" type="submit" name="submit" value="9"><br/>
-            <input class="blok1_1" type="submit" name="submit" value="4">
-            <input class="blok1_1" type="submit" name="submit" value="5">
-            <input class="blok1_1" type="submit" name="submit" value="6"><br/>
-            <input class="blok1_1" type="submit" name="submit" value="1">
-            <input class="blok1_1" type="submit" name="submit" value="2">
-            <input class="blok1_1" type="submit" name="submit" value="3"><br/>
-            <input class="blok1_zero" type="submit" name="submit" value="0">
+    <head>
+        <meta charset="UTF-8">
+        <title>Calculator</title>
+        <link th:href="@{/css/moyCss.css}" rel="stylesheet"/>
+        <th:block th:insert="connectionCss :: connectionCss"/>
+    </head>
+    <body>
+    <th:block th:insert="connectionMainMenu :: connectionMainMenu"/>
+        <div class="blok">
+            <form action="test3" name="MyForm" method="POST">
+                <input id="show" type="text" name="text" th:value="${max}"/><br/>
+                <div class="blok1">
+                    <input class="blok1_1" type="submit" name="submit" value="7">
+                    <input class="blok1_1" type="submit" name="submit" value="8">
+                    <input class="blok1_1" type="submit" name="submit" value="9"><br/>
+                    <input class="blok1_1" type="submit" name="submit" value="4">
+                    <input class="blok1_1" type="submit" name="submit" value="5">
+                    <input class="blok1_1" type="submit" name="submit" value="6"><br/>
+                    <input class="blok1_1" type="submit" name="submit" value="1">
+                    <input class="blok1_1" type="submit" name="submit" value="2">
+                    <input class="blok1_1" type="submit" name="submit" value="3"><br/>
+                    <input class="blok1_zero" type="submit" name="submit" value="0">
+                </div>
+            </form>
+            <form action="math" name="formMath" method="POST">
+                <div class="blok2">
+                    <input class="blok2_1" type="submit" name="submit" value="*"><br/>
+                    <input class="blok2_1" type="submit" name="submit" value="+"><br/>
+                    <input class="blok2_1" type="submit" name="submit" value="-"><br/>
+                    <input class="blok2_1" type="submit" name="submit" value="/"><br/>
+                </div>
+            </form>
+            <form action="clean" name="formClean" method="POST">
+                <div >
+                    <input class="blok3_1" type="submit" name="submit" value="Очистить">
+                </div>
+            </form>
+            <form action="rezult" name="formRezult" method="POST">
+                <div class="blok4">
+                    <input class="blok4_1" type="submit" name="submit" value="=">
+                </div>
+            </form>
         </div>
+    <br/>
+    <br/>
+    <br/>
+    <form action="returnIndex" name="returnIndex" method="POST">
+            <input class="blok3_1" type="submit" name="submit" value="Главная">
     </form>
-    <form action="math" name="formMath" method="POST">
-        <div class="blok2">
-            <input class="blok2_1" type="submit" name="submit" value="*"><br/>
-            <input class="blok2_1" type="submit" name="submit" value="+"><br/>
-            <input class="blok2_1" type="submit" name="submit" value="-"><br/>
-            <input class="blok2_1" type="submit" name="submit" value="/"><br/>
-        </div>
-    </form>
-    <form action="clean" name="formClean" method="POST">
-        <div >
-            <input class="blok3_1" type="submit" name="submit" value="Очистить">
-        </div>
-    </form>
-    <form action="rezult" name="formRezult" method="POST">
-        <div class="blok4">
-            <input class="blok4_1" type="submit" name="submit" value="=">
-        </div>
-    </form>
-</div>
-</body>
+    </body>
 </html>

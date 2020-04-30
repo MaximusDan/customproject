@@ -3,11 +3,12 @@ body {
     padding: 0;
     margin: 0;
 }
-.blok {
-    margin-top:10px;
-    margin-left:10px;
-    width:100%;
-    height:60px;
-    background-color:#ff9966;
-    border:1px solid black;
+
+.mainBlok {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 100%;
+    height: 60px;
+    background-color: #ff9966;
+    border: 1px solid black;
 }

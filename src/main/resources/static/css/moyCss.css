@@ -13,7 +13,7 @@ body {
     margin-top:10px;
     margin-left:10px;
     width:200px;
-    height:320px;
+    height:310px;
     background-color:green;
     border:1px solid black;
 }
@@ -30,12 +30,12 @@ body {
 }
 .blok1_zero {
     margin-top: 10px;
-    width: 130px;
+    width: 128px;
     height: 40px;
 }
 .blok2{
-    margin-top:-200px;
-    margin-left:150px;
+    margin-top:-216px;
+    margin-left:143px;
     width: 40px;
     height: 200px;
 
@@ -48,14 +48,14 @@ body {
 
 .blok3_1{
     float:left;
-    margin-top:10px;
+    margin-top:-10px;
     margin-left:10px;
-    width: 130px;
+    width: 128px;
     height: 40px;
 }
 .blok4{
-    margin-top:10px;
-    margin-left:150px;
+    margin-top:-10px;
+    margin-left:143px;
     width: 40px;
     height: 40px;
 }
