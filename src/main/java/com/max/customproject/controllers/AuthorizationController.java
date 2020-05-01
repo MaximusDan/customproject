@@ -26,11 +26,7 @@ public class AuthorizationController {
     public ModelAndView authorizationPage(@RequestParam String login, String password) {
         ModelAndView model = new ModelAndView();
 
-        User people = new User();
-        people.login = login;
-        people.password = password;
-
-        User checkUserInCollection = UserStorage.checkPeopleInCollection(people.login, people.password);
+        User checkUserInCollection = UserStorage.checkPeopleInCollection(login,password);
         if (checkUserInCollection == null) {
             model.addObject("finishMessageAuthorization", "Такого пользователя нет");
             model.setViewName("index");
