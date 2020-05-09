@@ -36,4 +36,14 @@ public class AuthorizationController {
         }
         return model;
     }
+
+
+    public boolean checkAutorizationUser(){
+        Object isAuthorize = session.getAttribute("isAuthorize");
+        if (isAuthorize != null && (boolean) isAuthorize) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

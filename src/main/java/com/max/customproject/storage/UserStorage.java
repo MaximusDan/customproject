@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class UserStorage {
 
     /**
-     * users - коллекция новых зарегистрированных пльзователей
+     Коллекция новых зарегистрированных пльзователей
      */
     public static ArrayList<User> users = new ArrayList<>();
 

@@ -2,11 +2,11 @@
     <head>
         <meta charset="UTF-8">
         <title>Меню</title>
-        <link th:href="@{/css/mainCss.css}" rel="stylesheet"/> <!--"подключение цсс"-->
+        <th:block th:insert="connectionCss :: connectionCss"/> <!--"подключение цсс"-->
     </head>
     <body>
           <div class="mainBlok">
-                <h1>Главная    Теория    <a href="calculator">Калькулятор</a></h1>
+                <h1><th:block th:insert="connectionMainMenu :: connectionMainMenu"/></h1>
           </div>
     </body>
 </html>

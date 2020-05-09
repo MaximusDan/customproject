@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
 
 @Controller
-public class returnIndexController {
+public class ReturnToIndexController {
 
     @Autowired
     private HttpSession session;
