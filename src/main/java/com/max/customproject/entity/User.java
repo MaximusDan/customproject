@@ -23,6 +23,20 @@ public class User {
 */
     public String email;
 
+/**
+Конструктор для создания вручную пользователей в коллекции
+*/
+    public User(String login, String password, String email) {
+        this.login = login;
+        this.password = password;
+        this.email = email;
+    }
+
+/**
+Конструктор для создания пользователей через сайт клиента
+*/
+    public User() {
+    }
 }
 
 

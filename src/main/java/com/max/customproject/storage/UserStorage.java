@@ -12,7 +12,10 @@ public class UserStorage {
     /**
      Коллекция новых зарегистрированных пльзователей
      */
-    public static ArrayList<User> users = new ArrayList<>();
+    public static ArrayList<User> users = new ArrayList<User>(){{
+        add(new User("asd123@.","Zrhenzrhen156167","maxum@tut.by"));
+        add(new User("zxc123@.","Zrhenzrhen111222","maxyra@tut.by"));
+    }};
 
     /**
      * Метод добавляет ползоваеля в коллекцию
