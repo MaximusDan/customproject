@@ -12,3 +12,11 @@ body {
     background-color: #ff9966;
     border: 1px solid black;
 }
+.left {
+    margin-top:-10px;
+    float: left;
+}
+.right {
+    margin-top:-9px;
+    margin-left:1800px;
+}
