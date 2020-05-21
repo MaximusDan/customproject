@@ -32,6 +32,7 @@ public class AuthorizationController {
             model.setViewName("index");
         } else {
             session.setAttribute("isAuthorize", true);
+            session.setAttribute("getLogin", login);
             model.setViewName("redirect:main");
         }
         return model;

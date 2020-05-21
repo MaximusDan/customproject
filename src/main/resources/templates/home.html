@@ -1,12 +1,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Домашняя</title>
-    <th:block th:insert="connectionCss :: connectionCss"/> <!--"подключение цсс"-->
-</head>
-<body>
-<div class="mainBlok">
-    <h1><th:block th:insert="connectionMainMenu :: connectionMainMenu"/></h1>
-</div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Домашняя</title>
+        <th:block th:insert="connectionCss :: connectionCss"/> <!--"подключение цсс"-->
+    </head>
+    <body>
+        <div class="mainBlok">
+            <h1><th:block th:insert="connectionMainMenu :: connectionMainMenu"/></h1>
+        </div>
+        <div>
+            <h1>Логин: </h1>
+            <input id="show1" type="text" name="text" th:value="${login}"/><br/>
+            <h1>Пароль: </h1>
+            <input id="show2" type="text" name="text" th:value="${password}"/><br/>
+            <h1>Емаил: </h1>
+            <input id="show3" type="text" name="text" th:value="${email}"/><br/>
+        </div>
+    </body>
 </html>

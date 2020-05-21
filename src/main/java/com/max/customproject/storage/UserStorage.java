@@ -1,5 +1,6 @@
 package com.max.customproject.storage;
 
+import com.max.customproject.controllers.HomeController;
 import com.max.customproject.entity.User;
 
 import java.util.ArrayList;
@@ -38,5 +39,18 @@ public class UserStorage {
             }
         }
         return user;
+    }
+
+    /**
+     * Ищем пользователя по логину и возвращаем его логин пароль и мыло
+     */
+    public static User  getPeopleInCollection(String login) {
+        for (int i = 0; i < users.size(); i++) {
+            User user1 = users.get(i);
+            if (user1.login.equals(login)){
+                return user1;
+            }
+        }
+        return null;
     }
 }
