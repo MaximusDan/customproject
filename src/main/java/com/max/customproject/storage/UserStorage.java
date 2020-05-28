@@ -14,8 +14,8 @@ public class UserStorage {
      * Коллекция новых зарегистрированных пльзователей
      */
     public static ArrayList<User> users = new ArrayList<User>() {{
-        add(new User("asd123@.", "Zrhenzrhen156167", "maxum@tut.by"));
-        add(new User("zxc123@.", "Zrhenzrhen111222", "maxyra@tut.by"));
+        add(new User("1", "1", "maxum@tut.by"));
+        add(new User("2", "2", "maxyra@tut.by"));
     }};
 
     /**
