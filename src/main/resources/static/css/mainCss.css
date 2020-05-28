@@ -7,7 +7,7 @@ body {
 .mainBlok {
     margin-top: 10px;
     margin-left: 10px;
-    width: 100%;
+    width: 99%;
     height: 60px;
     background-color: #ff9966;
     border: 1px solid black;
@@ -15,8 +15,9 @@ body {
 .left {
     margin-top:-10px;
     float: left;
+
 }
 .right {
     margin-top:-9px;
-    margin-left:1800px;
+    float: right;
 }

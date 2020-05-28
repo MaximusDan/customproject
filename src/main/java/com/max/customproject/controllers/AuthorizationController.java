@@ -47,4 +47,15 @@ public class AuthorizationController {
             return false;
         }
     }
+
+    @RequestMapping("returnIndex")
+    private String returnIndexPage() {
+        Object isAuthorize = session.getAttribute("isAuthorize");
+        if (isAuthorize != null && (boolean) isAuthorize) {
+            session.setAttribute("isAuthorize", false);
+            return "redirect:/";
+        } else {
+            return "redirect:/";
+        }
+    }
 }
