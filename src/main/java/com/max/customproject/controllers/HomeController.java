@@ -26,7 +26,7 @@ public class HomeController {
             model.addObject("email", returnUser.email);
             model.setViewName("home");
         } else {
-            model.setViewName("index");
+            model.setViewName("redirect:/");
         }
         return model;
     }

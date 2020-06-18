@@ -82,7 +82,24 @@ body {
     height: 40px;
 }
 
+.my-input{
+    width: 300px;
+}
 
+.b1{
+    background: #FF0000;
+    height: 200px;
+}
+
+.b2{
+    background: #ff9966;
+    height: 200px;
+}
+
+.b3{
+    background: rebeccapurple;
+    height: 200px;
+}
 
 
 

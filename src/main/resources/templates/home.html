@@ -9,12 +9,12 @@
             <h1><th:block th:insert="connectionMainMenu :: connectionMainMenu"/></h1>
         </div>
         <div>
-            <h1>Логин: </h1>
-            <input id="show1" type="text" name="text" th:value="${login}"/><br/>
-            <h1>Пароль: </h1>
-            <input id="show2" type="text" name="text" th:value="${password}"/><br/>
-            <h1>Емаил: </h1>
-            <input id="show3" type="text" name="text" th:value="${email}"/><br/>
+            <h1> Логин:   <label th:text="${login}"></label></h1>
+
+            <h1> Пароль:   <label th:text="${password}"></label></h1>
+
+            <h1> Емаил:   <label th:text="${email}"></label></h1>
+
         </div>
     </body>
 </html>

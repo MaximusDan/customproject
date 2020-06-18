@@ -1,45 +1,126 @@
 <html xmlns:th="http://www.thymeleaf.org">>
 <head>
-	<title>Регистрация и Авторизация</title>
-	<link th:href="@{/css/registration.css}" rel="stylesheet"/> <!--"подключение цсс"-->
+    <title>Регистрация и Авторизация</title>
+    <link th:href="@{/css/registration.css}" rel="stylesheet"/> <!--"подключение цсс"-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
-	<body>	
-			<div class="form_wrap_left">
-				<form action="autorization" name="MyForm" autocomplete="on">
-					<h1>Вход</h1>
-					<label for="login"><b>Введите логин или Email</b></label><br/>
-					<input id="login" name = "login" type="text" placeholder=" Логин или Email" size="40" required><br/>
-					<br/>		
-					<label for="password"><b>Введите Пароль</b></label><br/>
-					<input id="password" name = "password" type="text" placeholder=" Пароль" size="40" required><br/>
-					<label class="collor" th:text="${finishMessageAuthorization}"></label><br/>
-					<br/>
-					<input type="submit" value="Войти"><br/>
-				</form>
-			</div>
-			<div class="form_wrap_right">
-				<form action="registration" name="MyForm" autocomplete="on">
-					<h1>Регистрация</h1>
-					<label for="login1"><b>Введите логин</b></label><br/>
-					<input id="login1" name="login1" type="text" placeholder=" Логин" size="40" required><br/>
-					    <label class="collor" th:text="${loginErrorMessage}"></label><br/>
-					<br/>		
-					<label for="email"><b>Введите Email</b></label><br/>
-					<input id="email" name = "email" type="email" placeholder=" Email" size="40" required><br/>
-					    <label class="collor" th:text="${mailErrorMessage}"></label><br/>
-					<br/>	
-					<label for="psw"><b>Введите пароль</b></label><br/>
-					<input id="psw" name = "psw" type="password" placeholder="Пароль" size="40" required><br/>
-						<label class="collor" th:text="${passErrorMessage}"></label><br/>
-					<br/>
-					<label for="psw1"><b>Повторите пароль</b></label><br/>
-					<input id="psw1" name = "psw1" type="password" placeholder="Повторите пароль" size="40" required><br/>
-						<label class="collor" th:text="${doublePassErrorMessage}"></label><br/>
-					    <label class="collor" th:text="${finishMessage}"></label><br/>
-					<br/>
-					<input type="submit" value="Регистрация"><br/>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-sm b1">
+			<h1>Автризация</h1>
+			<div class="row main-form">
+				<form action="autorization" name="MyForm" class="" method="post">
+					<div class="form-group">
+						<label for="login">Введите логин или Email</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa"
+																	   aria-hidden="true"></i></span>
+								<input type="text" class="form-control" id="login" name="login"
+									   placeholder="Логин или Email"/>
+							</div>
+						</div>
+						<label class="collor" th:text="${loginErrorMessage}"></label><br/>
+					</div>
+					<div class="form-group">
+						<label for="password">Введите пароль</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-lock fa-lg"
+																   aria-hidden="true"></i></span>
+								<input type="text" class="form-control" id="password" name="password"
+									   placeholder="Пароль"/>
+							</div>
+						</div>
+						<label class="collor" th:text="${finishMessageAuthorization}"></label>
+					</div>
+
+					<div>
+						<input type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button"
+							   value="Войти">
+					</div>
 
 				</form>
 			</div>
-	</body>
+
+		</div>
+
+    <div class="col-sm b2">
+        <h1>Регистрация</h1>
+            <div class="row main-form ttt">
+                <form action="registration" name="MyForm" class="" method="post">
+                    <div class="form-group">
+                        <label for="login1">Логин</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" id="login1" name="login1"
+                                       placeholder="Введите логин"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa"
+                                                                   aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" id="email" name="email"
+                                       placeholder="Введите Email"/>
+                            </div>
+                        </div>
+                        <label class="collor" th:text="${mailErrorMessage}"></label><br/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="psw">Пароль</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg"
+                                                                   aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" id="psw" name="psw"
+                                       placeholder="Введите пароль"/>
+                            </div>
+                        </div>
+                        <label class="collor" th:text="${passErrorMessage}"></label><br/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="psw1">Повторите пароль</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg"
+                                                                   aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" id="psw1" name="psw1"
+                                       placeholder="Повторите пароль"/>
+                            </div>
+                        </div>
+                        <label class="collor" th:text="${doublePassErrorMessage}"></label><br/>
+                        <label class="collor" th:text="${finishMessage}"></label><br/>
+                    </div>
+
+                    <div class="form-group ">
+                        <input type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button"
+                               value="Регистрация">
+                    </div>
+                </form>
+            </div>
+	</div>
+    </div>
+</div>
+</body>
 </html>
