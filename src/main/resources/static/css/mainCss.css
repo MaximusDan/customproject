@@ -5,12 +5,8 @@ body {
 }
 
 .mainBlok {
-    margin-top: 10px;
-    margin-left: 10px;
-    width: 99%;
-    height: 60px;
-    background-color: #ff9966;
-    border: 1px solid black;
+    position: fixed;
+    top: 0;
 }
 .left {
     margin-top:-10px;

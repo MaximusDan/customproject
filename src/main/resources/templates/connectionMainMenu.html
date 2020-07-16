@@ -1,4 +1,18 @@
 <th:block th:fragment="connectionMainMenu" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-                <h1><div class="left"><a href="home">Домашняя</a>    <a href="theory">Теория</a>    <a href="calculator">Калькулятор</a></div></h1>
-                <h1><div class="right"><a href="returnIndex"> Выход</a></div></h1>
+
+    <nav class="navbar navbar-expand-sm bg-light navbar-inverse fixed-top navbar-dark bg-dark">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <img src="https://www.fresher.ru/manager_content/images/skolko-stoil-dizajn-samyx-uznavaemyx-logo-v-mire/5.png" width="90">
+            <li class="nav-item"> <a class="nav-link" href="home">Домашняя</a></li>
+            <li class="nav-item"><a class="nav-link" href="theory">Теория</a></li>
+            <li class="nav-item"><a class="nav-link" href="calculator">Калькулятор</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+                <a class="nav-link" href="returnIndex"> Выход</a>
+            </li>
+        </ul>
+    </div>
+    </nav>
 </th:block>

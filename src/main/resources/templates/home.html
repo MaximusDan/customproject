@@ -5,10 +5,11 @@
         <th:block th:insert="connectionCss :: connectionCss"/> <!--"подключение цсс"-->
     </head>
     <body>
-        <div class="mainBlok">
-            <h1><th:block th:insert="connectionMainMenu :: connectionMainMenu"/></h1>
-        </div>
-        <div>
+    <div>
+        <h1><th:block th:insert="connectionMainMenu :: connectionMainMenu"/></h1>
+    </div>
+    <br>
+        <div class="home">
             <h1> Логин:   <label th:text="${login}"></label></h1>
 
             <h1> Пароль:   <label th:text="${password}"></label></h1>
